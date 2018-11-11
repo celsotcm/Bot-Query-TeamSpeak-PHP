@@ -34,7 +34,7 @@ if($tsAdmin->getElement('success', $tsAdmin->connect())) {
     $connectionInfo = $tsAdmin->whoAmI()['data'];
 
     for(;;){
-        $clients = $tsAdmin->clientList("-country -ip -groups");
+        $clientList = $tsAdmin->clientList("-country -ip -groups");
 		
 		foreach($clientList['data'] as $val) {
 		$groups = explode(",", $val['client_servergroups'] );
@@ -50,7 +50,7 @@ if($tsAdmin->getElement('success', $tsAdmin->connect())) {
 			}
 		}
 
-        foreach($clients['data'] as $client) {
+        foreach($clientList['data'] as $client) {
             if ($listMode == 1) {
                 $invalidCountry = false;
                 foreach($blacklist as $blacklistCountry){
